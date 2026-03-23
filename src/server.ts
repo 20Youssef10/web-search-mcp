@@ -35,13 +35,19 @@ import {
   registerMultiEngineSearch,
 } from "./tools/other-engines.js";
 
+import {
+  registerPerplexitySearch,
+  registerPerplexityDeepResearch,
+  registerPerplexityNews,
+} from "./tools/perplexity.js";
+
 export function buildServer(): McpServer {
   const server = new McpServer({
     name: "web-search-mcp-server",
-    version: "1.0.0",
+    version: "1.1.0",
   });
 
-  // ── Google ──────────────────────────────
+  // ── Google (10) ─────────────────────────
   registerGoogleSearch(server);       // google_search
   registerGoogleAiSearch(server);     // google_ai_search
   registerGoogleImages(server);       // google_images_search
@@ -53,23 +59,26 @@ export function buildServer(): McpServer {
   registerGooglePatents(server);      // google_patents_search
   registerGoogleMaps(server);         // google_maps_search
 
-  // ── Bing ────────────────────────────────
+  // ── Bing (4) ────────────────────────────
   registerBingSearch(server);         // bing_search
   registerBingImages(server);         // bing_images_search
   registerBingNews(server);           // bing_news_search
   registerBingVideos(server);         // bing_videos_search
 
-  // ── DuckDuckGo ──────────────────────────
+  // ── DuckDuckGo (2) ──────────────────────
   registerDdgInstant(server);         // duckduckgo_instant_answer
   registerDdgSearch(server);          // duckduckgo_search
 
-  // ── Other Engines ────────────────────────
+  // ── Other Engines (4) ────────────────────
   registerYahooSearch(server);        // yahoo_search
   registerYandexSearch(server);       // yandex_search
   registerBaiduSearch(server);        // baidu_search
-
-  // ── Multi-Engine ─────────────────────────
   registerMultiEngineSearch(server);  // multi_engine_search
+
+  // ── Perplexity Sonar (3) ─────────────────
+  registerPerplexitySearch(server);       // perplexity_search
+  registerPerplexityDeepResearch(server); // perplexity_deep_research
+  registerPerplexityNews(server);         // perplexity_news
 
   return server;
 }
