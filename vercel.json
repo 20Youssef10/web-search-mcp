@@ -6,11 +6,14 @@
     "api/mcp.ts": {
       "maxDuration": 60,
       "memory": 512
+    },
+    "api/health.ts": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
     { "source": "/mcp",    "destination": "/api/mcp" },
-    { "source": "/health", "destination": "/api/mcp" }
+    { "source": "/health", "destination": "/api/health" }
   ],
   "headers": [
     {
@@ -18,7 +21,7 @@
       "headers": [
         { "key": "Access-Control-Allow-Origin",  "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization, x-api-key" }
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
       ]
     }
   ]

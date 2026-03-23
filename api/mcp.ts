@@ -13,12 +13,14 @@ export default async function handler(
   if (req.method === "OPTIONS") { res.status(204).end(); return; }
 
   if (req.method === "GET") {
+    // Quick status - full details at /health
     res.status(200).json({
       status: "ok",
-      service: "web-search-mcp-server",
-      version: "1.0.0",
-      tools: 20,
-      serpapi_configured: !!process.env.SERPAPI_API_KEY,
+      version: "1.2.0",
+      tools: 26,
+      serpapi_configured:    !!process.env.SERPAPI_API_KEY,
+      perplexity_configured: !!process.env.PERPLEXITY_API_KEY,
+      youtube_configured:    !!process.env.YOUTUBE_API_KEY,
     });
     return;
   }
