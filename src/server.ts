@@ -34,49 +34,60 @@ import {
   registerYoutubeChannelInfo,
 } from "./tools/youtube.js";
 
+import {
+  registerNewsTopHeadlines,
+  registerNewsSearch,
+  registerNewsSources,
+} from "./tools/newsapi.js";
+
 export function buildServer(): McpServer {
   const server = new McpServer({
     name:    "web-search-mcp-server",
-    version: "1.2.0",
+    version: "1.3.0",
   });
 
   // ── Google (10) ─────────────────────────────────────────────────────────────
-  registerGoogleSearch(server);       // google_search
-  registerGoogleAiSearch(server);     // google_ai_search
-  registerGoogleImages(server);       // google_images_search
-  registerGoogleNews(server);         // google_news_search
-  registerGoogleScholar(server);      // google_scholar_search
-  registerGoogleVideos(server);       // google_videos_search
-  registerGoogleFinance(server);      // google_finance_search
-  registerGoogleJobs(server);         // google_jobs_search
-  registerGooglePatents(server);      // google_patents_search
-  registerGoogleMaps(server);         // google_maps_search
+  registerGoogleSearch(server);
+  registerGoogleAiSearch(server);
+  registerGoogleImages(server);
+  registerGoogleNews(server);
+  registerGoogleScholar(server);
+  registerGoogleVideos(server);
+  registerGoogleFinance(server);
+  registerGoogleJobs(server);
+  registerGooglePatents(server);
+  registerGoogleMaps(server);
 
   // ── Bing (4) ────────────────────────────────────────────────────────────────
-  registerBingSearch(server);         // bing_search
-  registerBingImages(server);         // bing_images_search
-  registerBingNews(server);           // bing_news_search
-  registerBingVideos(server);         // bing_videos_search
+  registerBingSearch(server);
+  registerBingImages(server);
+  registerBingNews(server);
+  registerBingVideos(server);
 
   // ── DuckDuckGo (2) ──────────────────────────────────────────────────────────
-  registerDdgInstant(server);         // duckduckgo_instant_answer
-  registerDdgSearch(server);          // duckduckgo_search
+  registerDdgInstant(server);
+  registerDdgSearch(server);
 
   // ── Other Engines (4) ───────────────────────────────────────────────────────
-  registerYahooSearch(server);        // yahoo_search
-  registerYandexSearch(server);       // yandex_search
-  registerBaiduSearch(server);        // baidu_search
-  registerMultiEngineSearch(server);  // multi_engine_search
+  registerYahooSearch(server);
+  registerYandexSearch(server);
+  registerBaiduSearch(server);
+  registerMultiEngineSearch(server);
 
   // ── Perplexity Sonar (3) ────────────────────────────────────────────────────
-  registerPerplexitySearch(server);       // perplexity_search
-  registerPerplexityDeepResearch(server); // perplexity_deep_research
-  registerPerplexityNews(server);         // perplexity_news
+  registerPerplexitySearch(server);
+  registerPerplexityDeepResearch(server);
+  registerPerplexityNews(server);
 
   // ── YouTube (3) ─────────────────────────────────────────────────────────────
-  registerYoutubeSearch(server);          // youtube_search
-  registerYoutubeVideoDetails(server);    // youtube_video_details
-  registerYoutubeChannelInfo(server);     // youtube_channel_info
+  registerYoutubeSearch(server);
+  registerYoutubeVideoDetails(server);
+  registerYoutubeChannelInfo(server);
+
+  // ── NewsAPI (3) ─────────────────────────────────────────────────────────────
+  registerNewsTopHeadlines(server);
+  registerNewsSearch(server);
+  registerNewsSources(server);
 
   return server;
 }
